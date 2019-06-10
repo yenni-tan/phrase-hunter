@@ -54,13 +54,20 @@ class Game {
      * Handle incorrect guess:
      * - remove one life
      */
-    event.target.setAttribute("disabled", "disabled");
-    const letter = event.target.textContent;
+    let target = event.target;
+    const keys = document.getElementsByClassName('key');
+    for (let key of keys) {
+      if (key.textContent === event.key) {
+        target = key;
+      }
+    }
+    target.setAttribute("disabled", "disabled");
+    const letter = target.textContent;
     if (!this._activePhrase._phrase.includes(letter)) {
-      event.target.classList.add('wrong');
+      target.classList.add('wrong');
       this.removeLife();
     } else {
-      event.target.classList.add('chosen');
+      target.classList.add('chosen');
       this._activePhrase.showMatchedLetter(letter);
       if (this.checkForWin()) {
         this.gameOver();
