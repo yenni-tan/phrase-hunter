@@ -1,8 +1,12 @@
+/**
+ * Phrase - represents the phrase to guess and handles displaying and verifying guesses against the chosen phrase.
+ */
 class Phrase {
   constructor(phrase) {
     this._phrase = phrase.toLowerCase().split('');
   }
 
+  // dynamically generate guess boxes for phrase
   addPhraseToDisplay() {
     this._phrase
       .forEach(char => {
@@ -16,17 +20,16 @@ class Phrase {
       });
   }
 
+  // check if guessed letter is contained in phrase
   checkLetter(letter) {
     return this._phrase.includes(letter);
   }
 
+  // show correctly guessed letter
   showMatchedLetter(guessLetter) {
-    console.log('guessletter', guessLetter);
     const answerLetters = document.getElementById('phrase').getElementsByTagName('ul')[0].getElementsByTagName('li');
     for (let answerLetter of answerLetters) {
-      console.log('answerLetter', answerLetter);
       if (answerLetter.textContent === guessLetter) {
-        console.log('match');
         answerLetter.classList.remove('hide');
         answerLetter.classList.add('show');
       }
