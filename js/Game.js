@@ -9,7 +9,7 @@ class Game {
   // clear the game state
   startGame() {
     document.getElementById('overlay').style.display = 'none';
-    
+
     // remove old phrase boxes
     const ul = document.getElementById('phrase').getElementsByTagName('ul')[0];
     while (ul.hasChildNodes()) {
