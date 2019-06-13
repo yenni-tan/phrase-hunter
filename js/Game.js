@@ -41,6 +41,11 @@ class Game {
     return this._phrases[Math.floor((Math.random() * 5))];
   }
 
+  isNewSelection(classList) {
+    return !classList.contains('chosen') 
+    && !classList.contains('wrong');
+  }
+
   // handles interactions of user keyboard selections
   handleInteraction(event) {
     /**
@@ -63,14 +68,16 @@ class Game {
     }
     target.setAttribute("disabled", "disabled");
     const letter = target.textContent;
-    if (!this._activePhrase._phrase.includes(letter)) {
-      target.classList.add('wrong');
-      this.removeLife();
-    } else {
-      target.classList.add('chosen');
-      this._activePhrase.showMatchedLetter(letter);
-      if (this.checkForWin()) {
-        this.gameOver();
+    if (this.isNewSelection(target.classList)) {
+      if (!this._activePhrase._phrase.includes(letter)) {
+        target.classList.add('wrong');
+        this.removeLife();
+      } else {
+        target.classList.add('chosen');
+        this._activePhrase.showMatchedLetter(letter);
+        if (this.checkForWin()) {
+          this.gameOver();
+        }
       }
     }
   }
