@@ -15,13 +15,14 @@
   --font-size-medium: 20px;
   --button-transition: border 0.5s;
   --h2-transition: font-size 0.5s, color;
+  --overlay-transition: opacity 0.5s;
 }
 
 /* main */
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -98,7 +99,7 @@ button:hover {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #e67f1e;
 }
 
 
@@ -182,13 +183,17 @@ button:hover {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #fbfbfb;
+  color: #c7c4c4;
   justify-content: center;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: 5px;
+  opacity: 1;
+  -webkit-transition: var(--overlay-transition);
+  -o-transition: var(--overlay-transition);
+  transition: var(--overlay-transition);
 }
 
 .title {
@@ -196,7 +201,7 @@ button:hover {
 }
 
 .start {
-  background-color: #040c31;
+  background: navy;
 }
 
 .start a {

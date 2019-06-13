@@ -8,7 +8,8 @@ class Game {
 
   // clear the game state
   startGame() {
-    document.getElementById('overlay').style.display = 'none';
+    setTimeout(() => document.getElementById('overlay').style.display = 'none', 500);
+    document.getElementById('overlay').style.opacity = 0;
 
     // remove old phrase boxes
     const ul = document.getElementById('phrase').getElementsByTagName('ul')[0];
@@ -101,7 +102,9 @@ class Game {
   // set game state when user has won or lost the game.
   gameOver() {
     const overlay = document.getElementById('overlay')
-    overlay.style.display = '';
+    setTimeout(() => overlay.style.display = '', 500);
+    overlay.style.opacity = 1;
+
     overlay.classList = '';
     if (this.checkForWin()) {
       overlay.classList.add('win');
