@@ -27,12 +27,10 @@ class Phrase {
 
   // show correctly guessed letter
   showMatchedLetter(guessLetter) {
-    const answerLetters = document.getElementById('phrase').getElementsByTagName('ul')[0].getElementsByTagName('li');
-    for (let answerLetter of answerLetters) {
-      if (answerLetter.textContent === guessLetter) {
-        answerLetter.classList.remove('hide');
-        answerLetter.classList.add('show');
-      }
+    const matchedLetters = document.getElementsByClassName(guessLetter);
+    for (let matchedLetter of matchedLetters) {
+      matchedLetter.classList.remove('hide');
+      matchedLetter.classList.add('show');
     }
   }
 }

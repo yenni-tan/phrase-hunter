@@ -39,7 +39,7 @@ class Game {
 
   // returns a random phrase
   getRandomPhrase() {
-    return this._phrases[Math.floor((Math.random() * 5))];
+    return this._phrases[Math.floor((Math.random() * this._phrases.length))];
   }
 
   isNewSelection(classList) {
@@ -70,7 +70,7 @@ class Game {
     target.setAttribute("disabled", "disabled");
     const letter = target.textContent;
     if (this.isNewSelection(target.classList)) {
-      if (!this._activePhrase._phrase.includes(letter)) {
+      if (!this._activePhrase.checkLetter(letter)) {
         target.classList.add('wrong');
         this.removeLife();
       } else {
